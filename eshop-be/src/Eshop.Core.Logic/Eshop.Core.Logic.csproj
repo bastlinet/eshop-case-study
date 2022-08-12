@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0; net48</TargetFrameworks>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\database-lib\src\EshopDb.Contracts\EshopDb.Contracts.csproj" />
+	  <ProjectReference Include="..\Eshop.Core.Contracts\Eshop.Core.Contracts.csproj" />
+	</ItemGroup>
+
+</Project>
