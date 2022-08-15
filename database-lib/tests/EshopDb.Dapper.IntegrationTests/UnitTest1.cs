@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace EshopDb.Dapper.IntegrationTests;
 
 public class UnitTest1

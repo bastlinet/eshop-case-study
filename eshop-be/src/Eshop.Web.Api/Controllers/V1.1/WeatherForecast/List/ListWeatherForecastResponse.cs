@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 
-namespace Eshop.Web.Api;
+namespace Eshop.Web.Api.Controllers.V1_1.WeatherForecast;
 
-public class WeatherForecast
+public class ListWeatherForecastResponse
 {
     public DateTime Date { get; set; }
 
