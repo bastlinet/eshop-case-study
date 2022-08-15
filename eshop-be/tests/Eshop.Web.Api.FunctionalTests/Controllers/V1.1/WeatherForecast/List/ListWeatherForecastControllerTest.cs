@@ -1,5 +1,5 @@
 ﻿using AutoFixture;
-using Eshop.Web.Api.Controllers.V1.WeatherForecast;
+using Eshop.Web.Api.Controllers.V1_1.WeatherForecast;
 using FluentAssertions;
 using Newtonsoft.Json;
 using System.Net;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Eshop.Web.Api.FunctionalTests.Controllers.V1.WeatherForecast;
+namespace Eshop.Web.Api.FunctionalTests.Controllers.V1_1.WeatherForecast;
 
 public partial class WeatherForecastControllerTest
 {

@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Eshop.Web.Api.Controllers.V1.WeatherForecast;
+namespace Eshop.Web.Api.Controllers.V1_1.WeatherForecast;
 
 public partial class WeatherForecastController : ControllerApiBase
 {

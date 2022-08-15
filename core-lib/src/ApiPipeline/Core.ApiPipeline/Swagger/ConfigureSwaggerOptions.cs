@@ -53,7 +53,7 @@ public class ConfigureSwaggerOptions
         var info = new OpenApiInfo()
         {
             Title = "My awesome API documentation!",
-            Description = "blablabla",
+            Description = "This is place for description",
             Version = desc.ApiVersion.ToString()
         };
 

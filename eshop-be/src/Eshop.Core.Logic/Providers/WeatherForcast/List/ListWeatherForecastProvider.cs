@@ -17,6 +17,8 @@ namespace Eshop.Core.Logic.Providers.WeatherForecast
         /// </summary>
         public async Task<IEnumerable<ListWeatherForecastOutputModel>> List(ListWeatherForecastInputModel input)
         {
+            input = input ?? throw new ArgumentNullException(nameof(input));
+
             var list = Enumerable.Range(1, 5).Select(index => new ListWeatherForecastOutputModel
             {
                 Date = DateTime.Now.AddDays(index),

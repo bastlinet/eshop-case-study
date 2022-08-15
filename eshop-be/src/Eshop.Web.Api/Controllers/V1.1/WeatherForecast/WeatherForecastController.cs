@@ -3,9 +3,9 @@ using Core.ApiPipeline.Controllers.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Eshop.Web.Api.Controllers.V1.WeatherForecast;
+namespace Eshop.Web.Api.Controllers.V1_1.WeatherForecast;
 
-[ApiVersion("1.0", Deprecated = true)]
+[ApiVersion("1.1")]
 [Route("api/v{version:apiVersion}/weatherforecast")]
 public partial class WeatherForecastController : ControllerApiBase
 {
