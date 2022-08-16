@@ -26,7 +26,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\core-lib\src\Core.Testing\Core.Testing.csproj" />
     <ProjectReference Include="..\..\src\EshopDb.Dapper\EshopDb.Dapper.csproj" />
-    <ProjectReference Include="..\..\src\EshopDb.Database\EshopDb.Database.sqlproj" />
   </ItemGroup>
 
 </Project>
