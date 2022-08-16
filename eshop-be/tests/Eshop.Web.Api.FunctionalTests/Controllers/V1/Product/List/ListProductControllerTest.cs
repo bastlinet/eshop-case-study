@@ -12,13 +12,8 @@ public partial class ProductControllerTest
     [Fact]
     public async Task List_ShouldReturn_Products()
     {
+        // TODO RUN SEEDS!
         // arrange
-        //var fixture = new Fixture();
-        //var request = fixture.Create<ListProductRequest>();
-
-        //var json = JsonConvert.SerializeObject(request);
-        //var data = new StringContent(json, Encoding.UTF8, "application/json");
-
         // act
         var httpResponse = await _client.GetAsync("/api/v1/product");
 

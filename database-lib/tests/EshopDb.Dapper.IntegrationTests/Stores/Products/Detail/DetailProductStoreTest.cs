@@ -9,11 +9,12 @@ namespace EshopDb.Dapper.IntegrationTests.Stores.Products
 {
     public partial class ProductStoreTest
     {
-        [Fact]
-        public async Task Detail_ShouldBe_Success()
+        [Theory]
+        [InlineData(1)]
+        public async Task Detail_ShouldBe_Success(int productId)
         {
             // TODO SEED DATA!
-            int productId = 1;
+
             // Arrange
             var fixture = new Fixture();
             var inputModel = fixture.Build<DetailProductDtoRequest>()
@@ -22,10 +23,10 @@ namespace EshopDb.Dapper.IntegrationTests.Stores.Products
             
 
             // Act
-            var list = await sut.Detail(inputModel, default);
+            var result = await sut.Detail(inputModel, default);
 
             // Assert 
-            list.Should().NotBeNull();
+            result.Should().NotBeNull();
         }
 
         [Fact]

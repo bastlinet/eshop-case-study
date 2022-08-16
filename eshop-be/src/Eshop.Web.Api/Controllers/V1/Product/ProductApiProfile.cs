@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Eshop.Core.Contracts.Handlers.Products.V1.Detail;
+using Eshop.Core.Contracts.Handlers.Products.V1.Edit;
 using Eshop.Core.Contracts.Handlers.Products.V1.List;
 
 namespace Eshop.Web.Api.Controllers.V1.Product;
@@ -19,5 +20,9 @@ public class ProductApiProfile : Profile
         // detail
         CreateMap<DetailProductRequest, DetailProductQuery>();
         CreateMap<DetailProductModel, DetailProductResponse>();
+
+        // edit
+        CreateMap<EditProductRequest, EditProductQuery>();
+        
     }
 }

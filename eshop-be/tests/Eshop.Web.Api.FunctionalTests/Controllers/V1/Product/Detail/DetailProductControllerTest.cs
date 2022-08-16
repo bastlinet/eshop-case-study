@@ -12,15 +12,8 @@ public partial class ProductControllerTest
     [Fact]
     public async Task Detail_ShouldReturn_Product()
     {
-        // arrange
-        //var fixture = new Fixture();
-        //var request = fixture.Create<ListProductRequest>();
-
-        //var json = JsonConvert.SerializeObject(request);
-        //var data = new StringContent(json, Encoding.UTF8, "application/json");
-
         // TODO RUN SEEDS!
-
+        // arrange
         // act
         var httpResponse = await _client.GetAsync("/api/v1/product/1");
 
@@ -37,7 +30,7 @@ public partial class ProductControllerTest
     }
 
     [Fact]
-    public async Task Detail_ShouldReturn_204()
+    public async Task Detail_ShouldReturn_NoContent()
     {
         // arrange
 

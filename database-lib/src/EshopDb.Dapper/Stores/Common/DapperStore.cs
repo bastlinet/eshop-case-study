@@ -21,11 +21,19 @@ namespace EshopDb.Dapper.Stores.Common
             DbContext = dbContext;
         }
 
+        public virtual async Task<OEntity> Update<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
+            where IEntity : class
+            where OEntity : class
+        {
+            var result = await Query<OEntity, IEntity>(proc, input, cancellationToken);
+            return result.FirstOrDefault();
+        }
+
         public virtual async Task<OEntity> GetRecord<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
             where OEntity : class
             where IEntity : class
         {
-            var result = await QueryCollection<OEntity, IEntity>(proc, input, cancellationToken);
+            var result = await Query<OEntity, IEntity>(proc, input, cancellationToken);
             return result.FirstOrDefault();
         }
 
@@ -33,11 +41,11 @@ namespace EshopDb.Dapper.Stores.Common
             where OEntity : class
             where IEntity : class
         {
-            var result = await QueryCollection<OEntity, IEntity>(proc, input, cancellationToken);
+            var result = await Query<OEntity, IEntity>(proc, input, cancellationToken);
             return result.ToList();
         }
 
-        protected virtual async Task<IEnumerable<OEntity>> QueryCollection<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
+        protected virtual async Task<IEnumerable<OEntity>> Query<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
             where OEntity : class
             where IEntity : class
         {
@@ -61,9 +69,10 @@ namespace EshopDb.Dapper.Stores.Common
                 var param = new DynamicParameters(input);
                 using (var q = conn.QueryMultiple(proc, param: param, commandType: System.Data.CommandType.StoredProcedure))
                 {
-                    result.Items = q.Read<OEntity>().ToList();
-                    result.FilteredCount = q.Read<int>().FirstOrDefault();
-                    result.TotalCount = q.Read<int>().FirstOrDefault();
+                    var items = await q.ReadAsync<OEntity>();
+                    result.Items = items.ToList();
+                    result.FilteredCount = await q.ReadFirstOrDefaultAsync<int>();
+                    result.TotalCount = await q.ReadFirstOrDefaultAsync<int>();
                 }
             }
 
