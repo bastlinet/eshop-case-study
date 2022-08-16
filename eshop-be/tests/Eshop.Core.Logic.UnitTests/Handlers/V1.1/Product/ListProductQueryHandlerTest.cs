@@ -1,8 +1,9 @@
 ﻿using AutoFixture;
 using AutoMapper;
-using Eshop.Core.Contracts.Handlers.Products.V1.Detail;
-using Eshop.Core.Logic.Handlers.Product;
-using Eshop.Core.Logic.Handlers.Products.V1.Detail;
+using Eshop.Core.Contracts.Handlers.Products.V1_1.List;
+using Eshop.Core.Logic.Handlers.Products.V1_1;
+using Eshop.Core.Logic.Handlers.Products.V1_1.List;
+using EshopDb.Contracts.Stores.Common;
 using EshopDb.Contracts.Stores.Products;
 using FluentAssertions;
 using NSubstitute;
@@ -12,15 +13,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Eshop.Core.Logic.UnitTests.Handlers.Product.Detail
+namespace Eshop.Core.Logic.UnitTests.Handlers.V1_1.Product.List
 {
-    public class DetailProductQueryHandlerTest
+    public class ListProductQueryHandlerTest
     {
         private readonly IProductStore productStore;
         private readonly IMapper mapper;
-        private readonly DetailProductQueryHandler sut;
+        private readonly ListProductQueryHandler sut;
 
-        public DetailProductQueryHandlerTest()
+        public ListProductQueryHandlerTest()
         {
             productStore = Substitute.For<IProductStore>();
 
@@ -29,7 +30,7 @@ namespace Eshop.Core.Logic.UnitTests.Handlers.Product.Detail
 
             mapper = configuration.CreateMapper();
 
-            sut = new DetailProductQueryHandler(productStore, mapper);
+            sut = new ListProductQueryHandler(productStore, mapper);
         }
 
         [Fact]
@@ -37,22 +38,23 @@ namespace Eshop.Core.Logic.UnitTests.Handlers.Product.Detail
         {
             // Arrange
             var fixture = new Fixture();
-            DetailProductDto product = fixture.Create<DetailProductDto>();
-
-            productStore.Detail(Arg.Any<DetailProductDtoRequest>(), default).Returns(Task.FromResult(product));
+            var filteredList = fixture.Create<PageDto<FilteredListProductDto>>();
+            productStore.FilteredList(Arg.Any<FilteredListProductDtoRequest>(), default).Returns(Task.FromResult(filteredList));
 
             // Act
-            var result = await sut.Handle(new DetailProductQuery(), default);
+            var list = await sut.Handle(new ListProductQuery(), default);
 
             // Assert 
-            result.Should().NotBeNull();
-            result.Should().BeEquivalentTo(product);
+            list.Should().NotBeNull();
+            list.Items.Should().NotBeNull();
+            list.Items.Count().Should().Be(filteredList.Items.Count());
+            list.Items.Should().BeEquivalentTo(filteredList.Items);
         }
 
         [Fact]
         public async Task Handle_ShouldThrow_ArgumentNullException()
         {
-            DetailProductQuery query = null;
+            ListProductQuery query = null;
 
             await FluentActions.Invoking(() => sut
                 .Handle(query, default))

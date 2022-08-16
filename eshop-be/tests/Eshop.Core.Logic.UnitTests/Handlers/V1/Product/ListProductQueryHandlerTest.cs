@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using AutoMapper;
 using Eshop.Core.Contracts.Handlers.Products.V1.List;
-using Eshop.Core.Logic.Handlers.Product;
+using Eshop.Core.Logic.Handlers.Products.V1;
 using Eshop.Core.Logic.Handlers.Products.V1.List;
 using EshopDb.Contracts.Stores.Products;
 using FluentAssertions;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Eshop.Core.Logic.UnitTests.Handlers.Product.List
+namespace Eshop.Core.Logic.UnitTests.Handlers.V1.Product.List
 {
     public class ListProductQueryHandlerTest
     {

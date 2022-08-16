@@ -65,6 +65,7 @@
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Stored Procedures\sp_GetProducts.sql" />
     <Build Include="dbo\Stored Procedures\sp_GetProduct.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetFilteredProducts.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SchemaCompare\EshopDevDb.scmp" />

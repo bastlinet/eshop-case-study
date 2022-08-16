@@ -2,8 +2,9 @@
 using Eshop.Core.Contracts.Handlers.Products.V1.Detail;
 using Eshop.Core.Contracts.Handlers.Products.V1.List;
 using EshopDb.Contracts.Stores.Products;
+using System.Collections.Generic;
 
-namespace Eshop.Core.Logic.Handlers.Product
+namespace Eshop.Core.Logic.Handlers.Products.V1
 {
     /// <summary>
     /// Register mapping for weatherforcast handlers
@@ -15,6 +16,8 @@ namespace Eshop.Core.Logic.Handlers.Product
             // list
             CreateMap<ListProductQuery, ListProductDtoRequest>();
             CreateMap<ListProductDto, ListProductItemModel>();
+            CreateMap<IReadOnlyList<ListProductDto>, ListProductModel>()
+                .ForMember(x => x.Items, x => x.MapFrom(y => y));
 
             // detail
             CreateMap<DetailProductQuery, DetailProductDtoRequest>();

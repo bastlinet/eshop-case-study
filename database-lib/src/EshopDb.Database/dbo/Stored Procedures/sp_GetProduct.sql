@@ -11,5 +11,4 @@ BEGIN
 		,[Products].[Description]
 	FROM [dbo].[Products]
 	WHERE [Products].[ID]=@Id
-
 END

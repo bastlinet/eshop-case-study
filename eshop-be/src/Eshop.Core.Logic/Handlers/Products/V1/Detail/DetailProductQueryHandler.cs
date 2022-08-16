@@ -23,10 +23,8 @@ namespace Eshop.Core.Logic.Handlers.Products.V1.Detail
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            DetailProductModel result = null;
-
             var product = await productStore.Detail(mapper.Map<DetailProductDtoRequest>(request), cancellationToken);
-            result = mapper.Map<DetailProductModel>(product);
+            var result = mapper.Map<DetailProductModel>(product);
 
             return await Task.FromResult(result);
         }
