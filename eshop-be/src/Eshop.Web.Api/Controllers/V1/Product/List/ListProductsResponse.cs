@@ -7,6 +7,7 @@ namespace Eshop.Web.Api.Controllers.V1.Product;
 /// <summary>
 /// List of product response
 /// </summary>
+[SwaggerSchema("List of product")]
 public class ListProductsResponse
 {
     [Required]

@@ -16,6 +16,7 @@ public partial class ProductController : ControllerApiBase
     /// <param name="cancellationToken">cancellation token</param>
     /// <returns>list of products</returns>
     [HttpGet]
+    [MapToApiVersion("1.0")]
     [SwaggerResponse(statusCode: StatusCodes.Status200OK, description: "Returns full list of products", type: typeof(ListProductsResponse))]
     public async Task<IActionResult> List(CancellationToken cancellationToken)
     {

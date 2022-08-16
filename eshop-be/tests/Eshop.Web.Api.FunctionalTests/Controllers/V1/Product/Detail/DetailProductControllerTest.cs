@@ -10,7 +10,7 @@ namespace Eshop.Web.Api.FunctionalTests.Controllers.V1.Product;
 public partial class ProductControllerTest
 {
     [Fact]
-    public async Task List_ShouldReturn_Products()
+    public async Task Detail_ShouldReturn_Product()
     {
         // arrange
         //var fixture = new Fixture();
@@ -19,8 +19,10 @@ public partial class ProductControllerTest
         //var json = JsonConvert.SerializeObject(request);
         //var data = new StringContent(json, Encoding.UTF8, "application/json");
 
+        // TODO RUN SEEDS!
+
         // act
-        var httpResponse = await _client.GetAsync("/api/v1/product");
+        var httpResponse = await _client.GetAsync("/api/v1/product/1");
 
         // assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -30,8 +32,19 @@ public partial class ProductControllerTest
         _output.WriteLine($"Content: {content}");
         content.Should().NotBeNull();
 
-        var response = JsonConvert.DeserializeObject<ListProductsResponse>(content);
+        var response = JsonConvert.DeserializeObject<DetailProductResponse>(content);
         response.Should().NotBeNull();
-        response.Items.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Detail_ShouldReturn_204()
+    {
+        // arrange
+
+        // act
+        var httpResponse = await _client.GetAsync("/api/v1/product/-1");
+
+        // assert
+        httpResponse.StatusCode.Should().Be(HttpStatusCode.NoContent);
     }
 }

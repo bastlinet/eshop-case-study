@@ -23,6 +23,17 @@ namespace EshopDb.Dapper.Stores.Common
         /// <summary>
         /// <inheritdoc />
         /// </summary>
+        public virtual async Task<OEntity> GetRecord<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
+            where OEntity : class
+            where IEntity : class
+        {
+            var result = await QueryCollection<OEntity, IEntity>(proc, input, cancellationToken);
+            return result.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
         public virtual async Task<IReadOnlyList<OEntity>> GetReadOnlyList<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
             where OEntity : class
             where IEntity : class
@@ -31,6 +42,9 @@ namespace EshopDb.Dapper.Stores.Common
             return result.ToList();
         }
 
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
         protected virtual async Task<IEnumerable<OEntity>> QueryCollection<OEntity, IEntity>(string proc, IEntity input, CancellationToken cancellationToken)
             where OEntity : class
             where IEntity : class
