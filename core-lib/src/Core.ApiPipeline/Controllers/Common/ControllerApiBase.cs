@@ -14,4 +14,16 @@ namespace Core.ApiPipeline.Controllers.Common;
 [SwaggerResponse(statusCode: StatusCodes.Status403Forbidden, type: typeof(ErrorResponse))]
 public abstract class ControllerApiBase : ControllerBase
 {
+    // TODO make it better
+    protected virtual IActionResult AcceptOrNotFound(bool isAccepted)
+    {
+        if (isAccepted)
+        {
+            return Accepted();
+        }
+        else
+        {
+            return NotFound();
+        }
+    }
 }

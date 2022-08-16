@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Eshop.Core.Contracts.Handlers.Products.V1.Detail;
+using Eshop.Core.Contracts.Handlers.Products.V1.Edit;
 using Eshop.Core.Contracts.Handlers.Products.V1.List;
 using EshopDb.Contracts.Stores.Products;
 using System.Collections.Generic;
@@ -22,6 +23,10 @@ namespace Eshop.Core.Logic.Handlers.Products.V1
             // detail
             CreateMap<DetailProductQuery, DetailProductDtoRequest>();
             CreateMap<DetailProductDto, DetailProductModel>();
+
+            // edit
+            CreateMap<EditProductQuery, EditProductDtoRequest>();
+            CreateMap<EditProductDto, EditProductModel>();
         }
     }
 }

@@ -10,20 +10,15 @@ namespace Eshop.Web.Api.FunctionalTests.Controllers.V1_1.Product;
 
 public partial class ProductControllerTest
 {
-    [Fact]
-    public async Task List_ShouldReturn_Products()
+    [Theory]
+    [InlineData(10, 10)]
+    public async Task List_ShouldReturn_Products(int limit, int offset)
     {
         // arrange
-        //var fixture = new Fixture();
-        //var request = fixture.Create<ListProductRequest>();
-
-        //var json = JsonConvert.SerializeObject(request);
-        //var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-        var limit = 1;
+        var url = $"/api/v1.1/product?limit={limit}&offset={offset}";
 
         // act
-        var httpResponse = await _client.GetAsync($"/api/v1.1/product?limit={limit}");
+        var httpResponse = await _client.GetAsync(url);
 
         // assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
