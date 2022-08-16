@@ -9,6 +9,7 @@ namespace Core.ApiPipeline.Controllers.Common;
 /// <inheritdoc/>
 /// </summary>
 [ApiController]
+[SwaggerResponse(statusCode: StatusCodes.Status204NoContent)]
 [SwaggerResponse(statusCode: StatusCodes.Status400BadRequest, type: typeof(ValidationResponse))]
 [SwaggerResponse(statusCode: StatusCodes.Status403Forbidden, type: typeof(ErrorResponse))]
 public abstract class ControllerApiBase : ControllerBase

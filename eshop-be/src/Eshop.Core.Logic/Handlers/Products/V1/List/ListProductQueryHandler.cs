@@ -26,7 +26,7 @@ namespace Eshop.Core.Logic.Handlers.Products.V1.List
 
             var result = new ListProductModel();
 
-            var items = await productStore.List(mapper.Map<ListProductInputModel>(request), cancellationToken);
+            var items = await productStore.List(mapper.Map<ListProductDtoRequest>(request), cancellationToken);
             result.Items = items.Select(x => mapper.Map<ListProductItemModel>(x));
 
             return await Task.FromResult(result);

@@ -10,27 +10,31 @@ namespace EshopDb.Dapper.IntegrationTests.Stores.Products
     public partial class ProductStoreTest
     {
         [Fact]
-        public async Task List_ShouldBe_Success()
+        public async Task Detail_ShouldBe_Success()
         {
+            // TODO SEED DATA!
+            int productId = 1;
             // Arrange
             var fixture = new Fixture();
-            var inputModel = fixture.Create<ListProductDtoRequest>();
-
+            var inputModel = fixture.Build<DetailProductDtoRequest>()
+                .With(x => x.Id, productId)
+                .Create();
+            
 
             // Act
-            var list = await sut.List(inputModel, default);
+            var list = await sut.Detail(inputModel, default);
 
             // Assert 
             list.Should().NotBeNull();
         }
 
         [Fact]
-        public async Task List_ShouldThrow_ArgumentNullException()
+        public async Task Detail_ShouldThrow_ArgumentNullException()
         {
-            ListProductDtoRequest inputModel = null;
+            DetailProductDtoRequest inputModel = null;
 
             await FluentActions.Invoking(() => sut
-                .List(inputModel, default))
+                .Detail(inputModel, default))
                 .Should().ThrowAsync<ArgumentNullException>();
         }
     }

@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 namespace Eshop.Web.Api.Controllers.V1.Product;
 
 /// <summary>
-/// List of product items response
+/// Detail of product response
 /// </summary>
-[SwaggerSchema("List of product items")]
-public class ListProductResponse
+[SwaggerSchema("Detail of product")]
+public class DetailProductResponse
 {
     [Required]
     [SwaggerSchema("Id", ReadOnly = true, Nullable = false)]
