@@ -9,5 +9,5 @@ BEGIN
 		,[Products].[Price]
 		,[Products].[Description]
 	FROM [dbo].[Products]
-
+	ORDER BY [Products].[ID]
 END

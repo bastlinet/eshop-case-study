@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Handlers\Product\List\**" />
-    <EmbeddedResource Remove="Handlers\Product\List\**" />
-    <None Remove="Handlers\Product\List\**" />
+    <Compile Remove="Handlers\V1\Product\List\**" />
+    <EmbeddedResource Remove="Handlers\V1\Product\List\**" />
+    <None Remove="Handlers\V1\Product\List\**" />
   </ItemGroup>
 
   <ItemGroup>

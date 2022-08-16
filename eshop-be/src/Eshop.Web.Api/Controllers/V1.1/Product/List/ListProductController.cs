@@ -1,12 +1,12 @@
 using Core.ApiPipeline.Controllers.Common;
-using Eshop.Core.Contracts.Handlers.Products.V1.List;
+using Eshop.Core.Contracts.Handlers.Products.V1_1.List;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Eshop.Web.Api.Controllers.V1.Product;
+namespace Eshop.Web.Api.Controllers.V1_1.Product;
 
 public partial class ProductController : ControllerApiBase
 {
@@ -16,7 +16,6 @@ public partial class ProductController : ControllerApiBase
     /// <param name="cancellationToken">cancellation token</param>
     /// <returns>list of products</returns>
     [HttpGet]
-    [MapToApiVersion("1.0")]
     [SwaggerResponse(statusCode: StatusCodes.Status200OK, description: "Returns full list of products", type: typeof(ListProductsResponse))]
     public async Task<IActionResult> List([FromQuery] ListProductRequest request, CancellationToken cancellationToken)
     {

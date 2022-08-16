@@ -35,3 +35,4 @@ namespace EshopDb.Dapper.IntegrationTests.Stores.Products
         }
     }
 }
+
