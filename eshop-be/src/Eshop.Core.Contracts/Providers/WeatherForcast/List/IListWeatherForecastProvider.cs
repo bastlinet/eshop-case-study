@@ -8,8 +8,8 @@ namespace Eshop.Core.Contracts.Providers.WeatherForecast
         /// <summary>
         /// List of fire weatherforcasts
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <param name="input">filter model for forecasting</param>
+        /// <returns>enumerable of forecasts</returns>
         Task<IEnumerable<ListWeatherForecastOutputModel>> List(ListWeatherForecastInputModel input);
     }
 }

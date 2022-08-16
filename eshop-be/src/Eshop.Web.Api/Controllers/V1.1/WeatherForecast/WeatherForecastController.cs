@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eshop.Web.Api.Controllers.V1_1.WeatherForecast;
 
+/// <summary>
+/// Controller for providing all endpoints for weatherforecast
+/// </summary>
 [ApiVersion("1.1")]
 [Route("api/v{version:apiVersion}/weatherforecast")]
 public partial class WeatherForecastController : ControllerApiBase

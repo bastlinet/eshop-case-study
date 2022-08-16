@@ -26,4 +26,8 @@
     <ProjectReference Include="..\..\src\Eshop.Core.Logic\Eshop.Core.Logic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\Product\List\" />
+  </ItemGroup>
+
 </Project>
