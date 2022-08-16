@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Eshop.Core.Contracts.Handlers.Products.V1.List
+﻿namespace Eshop.Core.Contracts.Handlers.Products.V1.List
 {
     public class ListProductItemModel
     {

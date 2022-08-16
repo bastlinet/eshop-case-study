@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eshop.Web.Api.Controllers.V1.Product;
 
+/// <summary>
+/// Controller for providing all endpoints for products
+/// </summary>
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/product")]
 public partial class ProductController : ControllerApiBase

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\ApiPipeline\Core.ApiPipeline\Core.ApiPipeline.csproj" />
+    <ProjectReference Include="..\..\src\Core.ApiPipeline\Core.ApiPipeline.csproj" />
   </ItemGroup>
 
 </Project>

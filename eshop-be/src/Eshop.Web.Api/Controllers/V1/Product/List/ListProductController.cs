@@ -10,8 +10,13 @@ namespace Eshop.Web.Api.Controllers.V1.Product;
 
 public partial class ProductController : ControllerApiBase
 {
+    /// <summary>
+    /// Returns full list of products
+    /// </summary>
+    /// <param name="cancellationToken">cancellation token</param>
+    /// <returns>list of products</returns>
     [HttpGet]
-    [SwaggerResponse(statusCode: StatusCodes.Status200OK, description: null, type: typeof(ListProductsResponse))]
+    [SwaggerResponse(statusCode: StatusCodes.Status200OK, description: "Returns full list of products", type: typeof(ListProductsResponse))]
     public async Task<IActionResult> List(CancellationToken cancellationToken)
     {
         var request = new ListProductRequest();

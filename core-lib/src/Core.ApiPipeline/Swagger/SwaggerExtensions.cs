@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace Core.ApiPipeline.Swagger;
 
+/// <summary>
+/// Swagger extensions for add and use openApi versioning
+/// </summary>
 public static class SwaggerExtensions
 {
     public static IServiceCollection AddSwaggerWithVersions(this IServiceCollection services)

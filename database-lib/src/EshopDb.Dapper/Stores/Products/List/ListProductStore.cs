@@ -1,4 +1,6 @@
-﻿using EshopDb.Contracts.Stores.Products;
+﻿using Database.Common.Attributes;
+using EshopDb.Contracts.Stores.Products;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,27 +12,12 @@ namespace EshopDb.Dapper.Stores.Products
         /// <summary>
         /// <inheritdoc />
         /// </summary>
-        public Task<IReadOnlyList<ListProductDto>> List(ListProductInputModel input, CancellationToken cancellationToken)
+        [StoredProcedure("sp_GetProducts")]
+        public async Task<IReadOnlyList<ListProductDto>> List(ListProductInputModel input, CancellationToken cancellationToken)
         {
-            var list = new List<ListProductDto>
-            {
-                new ListProductDto
-                {
-                    Id = 1,
-                    Name = "Test",
-                    ImgUri = "https://seznam.cz/img/1.jpg",
-                    Price = 42.54m
-                },
-                new ListProductDto
-                {
-                    Id = 2,
-                    Name = "Test",
-                    ImgUri = "https://seznam.cz/img/2.jpg",
-                    Price = 42.54m
-                }
-            };
-
-            return Task.FromResult(list as IReadOnlyList<ListProductDto>);
+            input = input ?? throw new ArgumentNullException(nameof(input));
+            var result = await GetReadOnlyList<ListProductDto, ListProductInputModel>(this.ProcedureName(), input, cancellationToken);
+            return result;
         }
     }
 }

@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\core-lib\src\ApiPipeline\Core.ApiPipeline\Core.ApiPipeline.csproj" />
+    <ProjectReference Include="..\..\..\core-lib\src\Core.ApiPipeline\Core.ApiPipeline.csproj" />
     <ProjectReference Include="..\..\..\database-lib\src\EshopDb.Dapper\EshopDb.Dapper.csproj" />
     <ProjectReference Include="..\Eshop.Core.Logic\Eshop.Core.Logic.csproj" />
   </ItemGroup>

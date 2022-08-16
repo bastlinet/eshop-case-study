@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace EshopDb.Dapper.IntegrationTests;
+namespace Core.ApiPipeline.UnitTests;
 
 public class UnitTest1
 {

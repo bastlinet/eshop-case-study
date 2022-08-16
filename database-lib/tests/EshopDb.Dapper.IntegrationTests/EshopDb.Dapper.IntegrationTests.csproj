@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.17.0" />
+    <PackageReference Include="FluentAssertions" Version="6.7.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="Microsoft.SqlServer.DacFx" Version="160.6161.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\core-lib\src\Core.Testing\Core.Testing.csproj" />
     <ProjectReference Include="..\..\src\EshopDb.Dapper\EshopDb.Dapper.csproj" />
+    <ProjectReference Include="..\..\src\EshopDb.Database\EshopDb.Database.sqlproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,8 @@
 ﻿namespace EshopDb.Contracts.Stores.Products
 {
+    /// <summary>
+    /// Dto object for returning product from stores
+    /// </summary>
     public class ListProductDto
     {
         public long Id { get; set; }

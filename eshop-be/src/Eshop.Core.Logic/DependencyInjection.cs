@@ -7,6 +7,9 @@ using System.Reflection;
 
 namespace Eshop.Core.Logic
 {
+    /// <summary>
+    /// Extending dependency injection for EshopDb.Core library
+    /// </summary>
     public static class DependencyInjection
     {
         public static IServiceCollection AddCore(this IServiceCollection services)

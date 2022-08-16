@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EshopDb.Contracts.Stores.Products
+﻿namespace EshopDb.Contracts.Stores.Products
 {
+    /// <summary>
+    /// Filter model for list of products
+    /// </summary>
     public class ListProductInputModel
     {
     }
