@@ -1,5 +1,7 @@
-﻿using Swashbuckle.AspNetCore.Annotations;
+﻿using AspNetCore.Hashids.Json;
+using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Eshop.Web.Api.Controllers.V1_1.Product;
 
@@ -11,6 +13,7 @@ public class ListProductResponse
 {
     [Required]
     [SwaggerSchema("Id", ReadOnly = true, Nullable = false)]
+    [JsonConverter(typeof(LongHashidsJsonConverter))]
     public long Id { get; set; }
 
     [Required]

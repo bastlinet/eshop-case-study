@@ -3,7 +3,6 @@ using Eshop.Core.Contracts.Handlers.Products.V1.Edit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 

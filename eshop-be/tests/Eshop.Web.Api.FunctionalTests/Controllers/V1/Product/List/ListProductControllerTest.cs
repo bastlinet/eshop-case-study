@@ -1,7 +1,8 @@
 ﻿using Eshop.Web.Api.Controllers.V1.Product;
 using FluentAssertions;
-using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -14,19 +15,31 @@ public partial class ProductControllerTest
     {
         // TODO RUN SEEDS!
         // arrange
+        var url = $"/api/v1/product";
+
         // act
-        var httpResponse = await _client.GetAsync("/api/v1/product");
+        var httpResponse = await client.GetAsync(url);
 
         // assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var content = await httpResponse.Content.ReadAsStringAsync();
 
-        _output.WriteLine($"Content: {content}");
+        output.WriteLine($"Content: {content}");
         content.Should().NotBeNull();
 
-        var response = JsonConvert.DeserializeObject<ListProductsResponse>(content);
+        var response = JsonSerializer.Deserialize<ListProductsResponseHashed>(content, jsonOptions);
         response.Should().NotBeNull();
         response.Items.Should().NotBeNull();
+    }
+
+    public class ListProductsResponseHashed: ListProductsResponse
+    {
+        public new IEnumerable<ListProductResponseHashed> Items { get; set; }
+    }
+
+    public class ListProductResponseHashed : ListProductResponse
+    {
+        public new string Id { get; set; }
     }
 }

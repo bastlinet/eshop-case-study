@@ -1,10 +1,10 @@
 ﻿using AutoFixture;
 using Eshop.Web.Api.Controllers.V1.WeatherForecast;
 using FluentAssertions;
-using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,21 +19,21 @@ public partial class WeatherForecastControllerTest
         var fixture = new Fixture();
         var request = fixture.Create<ListWeatherForecastRequest>();
 
-        var json = JsonConvert.SerializeObject(request);
+        var json = JsonSerializer.Serialize(request);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
 
         // act
-        var httpResponse = await _client.PostAsync("/api/v1/weatherforecast", data);
+        var httpResponse = await client.PostAsync("/api/v1/weatherforecast", data);
 
         // assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var content = await httpResponse.Content.ReadAsStringAsync();
 
-        _output.WriteLine($"Content: {content}");
+        output.WriteLine($"Content: {content}");
         content.Should().NotBeNull();
 
-        var response = JsonConvert.DeserializeObject<ListWeatherForecastsResponse>(content);
+        var response = JsonSerializer.Deserialize<ListWeatherForecastsResponse>(content, jsonOptions);
         response.Should().NotBeNull();
         response.Items.Should().NotBeNull();
     }

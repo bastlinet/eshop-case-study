@@ -6,8 +6,9 @@
 	</PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.Hashids.Int64" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>

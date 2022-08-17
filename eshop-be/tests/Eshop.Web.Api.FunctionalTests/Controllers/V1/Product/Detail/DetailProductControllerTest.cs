@@ -1,7 +1,7 @@
 ﻿using Eshop.Web.Api.Controllers.V1.Product;
 using FluentAssertions;
-using Newtonsoft.Json;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -9,35 +9,48 @@ namespace Eshop.Web.Api.FunctionalTests.Controllers.V1.Product;
 
 public partial class ProductControllerTest
 {
-    [Fact]
-    public async Task Detail_ShouldReturn_Product()
+    [Theory]
+    [InlineData(1)]
+    public async Task Detail_ShouldReturn_Product(long productId)
     {
         // TODO RUN SEEDS!
         // arrange
+        var productHash = hashids.EncodeLong(productId);
+        var url = $"/api/v1/product/{productHash}";
+
         // act
-        var httpResponse = await _client.GetAsync("/api/v1/product/1");
+        var httpResponse = await client.GetAsync(url);
 
         // assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var content = await httpResponse.Content.ReadAsStringAsync();
 
-        _output.WriteLine($"Content: {content}");
+        output.WriteLine($"Content: {content}");
         content.Should().NotBeNull();
 
-        var response = JsonConvert.DeserializeObject<DetailProductResponse>(content);
+        var response = JsonSerializer.Deserialize<DetailProductResponseHashed>(content, jsonOptions);
         response.Should().NotBeNull();
+        response.Id.Should().Be(productHash);
     }
 
-    [Fact]
-    public async Task Detail_ShouldReturn_NoContent()
+    [Theory]
+    [InlineData(0)]
+    public async Task Detail_ShouldReturn_NoContent(long productId)
     {
         // arrange
+        var productHash = hashids.EncodeLong(productId);
+        var url = $"/api/v1/product/{productHash}";
 
         // act
-        var httpResponse = await _client.GetAsync("/api/v1/product/-1");
+        var httpResponse = await client.GetAsync(url);
 
         // assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.NoContent);
+    }
+
+    public class DetailProductResponseHashed : DetailProductResponse
+    {
+        public new string Id { get; set; }
     }
 }

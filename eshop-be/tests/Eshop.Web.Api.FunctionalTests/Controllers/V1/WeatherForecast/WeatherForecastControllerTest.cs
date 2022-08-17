@@ -1,17 +1,12 @@
-﻿using System.Net.Http;
-using Xunit;
+﻿using Eshop.Web.Api.FunctionalTests.Controllers.Common;
 using Xunit.Abstractions;
 
 namespace Eshop.Web.Api.FunctionalTests.Controllers.V1.WeatherForecast;
 
-public partial class WeatherForecastControllerTest : IClassFixture<CustomWebApplicationFactory<WebApiMarker>>
+public partial class WeatherForecastControllerTest : BaseControllerTest
 {
-    private readonly HttpClient _client;
-    private readonly ITestOutputHelper _output;
-
     public WeatherForecastControllerTest(CustomWebApplicationFactory<WebApiMarker> factory, ITestOutputHelper testOutputHelper)
+        : base(factory, testOutputHelper)
     {
-        _client = factory.CreateClient();
-        _output = testOutputHelper;
     }
 }
