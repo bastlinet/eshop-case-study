@@ -25,7 +25,7 @@ namespace Eshop.Core.Logic.Handlers.Products.V1
             CreateMap<DetailProductDto, DetailProductModel>();
 
             // edit
-            CreateMap<EditProductQuery, EditProductDtoRequest>();
+            CreateMap<EditProductCommand, EditProductDtoRequest>();
             CreateMap<EditProductDto, EditProductModel>();
         }
     }

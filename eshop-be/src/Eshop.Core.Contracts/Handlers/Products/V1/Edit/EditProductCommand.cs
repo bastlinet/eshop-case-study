@@ -2,7 +2,7 @@
 
 namespace Eshop.Core.Contracts.Handlers.Products.V1.Edit
 {
-    public class EditProductQuery : IRequest<EditProductModel>
+    public class EditProductCommand : IRequest<EditProductModel>
     {
         public long Id { get; set; }
 

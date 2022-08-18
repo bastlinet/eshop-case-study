@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Eshop.Core.Logic.Handlers.Products.V1.Edit
 {
-    public class EditProductQueryHandler : IRequestHandler<EditProductQuery, EditProductModel>
+    public class EditProductCommandHandler : IRequestHandler<EditProductCommand, EditProductModel>
     {
         private readonly IProductStore productStore;
         private readonly IMapper mapper;
 
-        public EditProductQueryHandler(IProductStore productStore, IMapper mapper)
+        public EditProductCommandHandler(IProductStore productStore, IMapper mapper)
         {
             this.productStore = productStore;
             this.mapper = mapper;
         }
 
-        public async Task<EditProductModel> Handle(EditProductQuery request, CancellationToken cancellationToken)
+        public async Task<EditProductModel> Handle(EditProductCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 

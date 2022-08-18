@@ -22,7 +22,7 @@ public class ProductApiProfile : Profile
         CreateMap<DetailProductModel, DetailProductResponse>();
 
         // edit
-        CreateMap<EditProductRequest, EditProductQuery>();
+        CreateMap<EditProductRequest, EditProductCommand>();
         
     }
 }

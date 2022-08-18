@@ -12,13 +12,13 @@ using Xunit;
 
 namespace Eshop.Core.Logic.UnitTests.Handlers.V1.Product.Edit
 {
-    public class EditProductQueryHandlerTest
+    public class EditProductCommandHandlerTest
     {
         private readonly IProductStore productStore;
         private readonly IMapper mapper;
-        private readonly EditProductQueryHandler sut;
+        private readonly EditProductCommandHandler sut;
 
-        public EditProductQueryHandlerTest()
+        public EditProductCommandHandlerTest()
         {
             productStore = Substitute.For<IProductStore>();
 
@@ -27,7 +27,7 @@ namespace Eshop.Core.Logic.UnitTests.Handlers.V1.Product.Edit
 
             mapper = configuration.CreateMapper();
 
-            sut = new EditProductQueryHandler(productStore, mapper);
+            sut = new EditProductCommandHandler(productStore, mapper);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Eshop.Core.Logic.UnitTests.Handlers.V1.Product.Edit
             productStore.Edit(Arg.Any<EditProductDtoRequest>(), default).Returns(Task.FromResult(product));
 
             // Act
-            var result = await sut.Handle(new EditProductQuery(), default);
+            var result = await sut.Handle(new EditProductCommand(), default);
 
             // Assert 
             result.Should().NotBeNull();
@@ -50,7 +50,7 @@ namespace Eshop.Core.Logic.UnitTests.Handlers.V1.Product.Edit
         [Fact]
         public async Task Handle_ShouldThrow_ArgumentNullException()
         {
-            EditProductQuery query = null;
+            EditProductCommand query = null;
 
             await FluentActions.Invoking(() => sut
                 .Handle(query, default))

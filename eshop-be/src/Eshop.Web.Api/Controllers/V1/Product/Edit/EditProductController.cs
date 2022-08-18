@@ -22,7 +22,7 @@ public partial class ProductController : ControllerApiBase
     [SwaggerResponse(statusCode: StatusCodes.Status404NotFound, description: "Product was not found")]
     public async Task<IActionResult> Edit([FromBody] EditProductRequest request, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(mapper.Map<EditProductQuery>(request), cancellationToken);
+        var result = await mediator.Send(mapper.Map<EditProductCommand>(request), cancellationToken);
         return AcceptOrNotFound(result.Count != 0);
 
     }
