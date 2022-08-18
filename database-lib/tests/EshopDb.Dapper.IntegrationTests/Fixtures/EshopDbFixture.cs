@@ -33,7 +33,7 @@ namespace EshopDb.Dapper.IntegrationTests.Fixtures
         /// <summary>
         /// InMemoryDatabase vs Database
         /// </summary>
-        private string RelativeDacPackPath => $@"{SystemName}.Database\bin\{BuildConfiguration}\{SystemName}.Database.dacpac";
+        private string RelativeDacPackPath => $@"database-lib\src\{SystemName}.Database\bin\{BuildConfiguration}\{SystemName}.Database.dacpac";
 
         public EshopDbFixture()
                 : base(SystemName)
@@ -105,6 +105,7 @@ namespace EshopDb.Dapper.IntegrationTests.Fixtures
         public async Task RunSeedAsync()
         {
             var relativeSeedPaths = new string[] {
+                 @"Seeds\EshopDb.Data.sql",
             };
 
             foreach (var relativeSeedPath in relativeSeedPaths)

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -26,6 +26,12 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\core-lib\src\Core.Testing\Core.Testing.csproj" />
     <ProjectReference Include="..\..\src\EshopDb.Dapper\EshopDb.Dapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Seeds\EshopDb.Data.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

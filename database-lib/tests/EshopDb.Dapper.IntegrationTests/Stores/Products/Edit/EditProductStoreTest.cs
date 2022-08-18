@@ -13,8 +13,6 @@ namespace EshopDb.Dapper.IntegrationTests.Stores.Products
         [InlineData(1)]
         public async Task Edit_ShouldBe_Success(int productId)
         {
-            // TODO SEED DATA!
-
             // Arrange
             var fixture = new Fixture();
             var inputModel = fixture.Build<EditProductDtoRequest>()
