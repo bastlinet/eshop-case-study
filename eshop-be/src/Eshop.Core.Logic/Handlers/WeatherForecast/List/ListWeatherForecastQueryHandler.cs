@@ -29,7 +29,7 @@ namespace Eshop.Core.Logic.Handlers.WeatherForecast.List
             var weathers = await weatherForecastProvider.List(mapper.Map<ListWeatherForecastInputModel>(request));
             result.Items = weathers.Select(x => mapper.Map<ListWeatherForecastItemModel>(x));
 
-            return await Task.FromResult(result);
+            return result;
         }
     }
 }

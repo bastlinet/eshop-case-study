@@ -26,7 +26,7 @@ namespace Eshop.Core.Logic.Handlers.Products.V1.Edit
             var product = await productStore.Edit(mapper.Map<EditProductDtoRequest>(request), cancellationToken);
             var result = mapper.Map<EditProductModel>(product);
 
-            return await Task.FromResult(result);
+            return result;
         }
     }
 }

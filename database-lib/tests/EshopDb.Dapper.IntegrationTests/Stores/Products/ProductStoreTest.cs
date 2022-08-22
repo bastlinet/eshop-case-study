@@ -11,12 +11,6 @@ namespace EshopDb.Dapper.IntegrationTests.Stores.Products
 
         public ProductStoreTest()
         {
-            //// TODO make it better!
-            //var dbContext = new DatabaseContextOption
-            //{
-            //    ConnectionString = "Data Source=.; Initial Catalog=EshopDevDb; Trusted_Connection=No; Integrated Security=True"
-            //};
-
             this.sut = new ProductStore(this.DbContext);
         }
     }
