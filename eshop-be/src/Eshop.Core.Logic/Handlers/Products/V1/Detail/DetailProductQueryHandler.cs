@@ -26,7 +26,7 @@ namespace Eshop.Core.Logic.Handlers.Products.V1.Detail
             var product = await productStore.Detail(mapper.Map<DetailProductDtoRequest>(request), cancellationToken);
             var result = mapper.Map<DetailProductModel>(product);
 
-            return await Task.FromResult(result);
+            return result;
         }
     }
 }

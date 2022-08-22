@@ -27,7 +27,7 @@ namespace Eshop.Core.Logic.Handlers.Products.V1_1.List
             var items = await productStore.FilteredList(mapper.Map<FilteredListProductDtoRequest>(request), cancellationToken);
             var result = mapper.Map<ListProductModel>(items);
 
-            return await Task.FromResult(result);
+            return result;
         }
     }
 }
