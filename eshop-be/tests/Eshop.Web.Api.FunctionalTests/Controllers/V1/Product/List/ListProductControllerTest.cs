@@ -13,7 +13,6 @@ public partial class ProductControllerTest
     [Fact]
     public async Task List_ShouldReturn_Products()
     {
-        // TODO RUN SEEDS!
         // arrange
         var url = $"/api/v1/product";
 
