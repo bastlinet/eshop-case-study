@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\database-lib\tests\EshopDb.Dapper.IntegrationTests\EshopDb.Dapper.IntegrationTests.csproj" />
     <ProjectReference Include="..\..\src\Eshop.Web.Api\Eshop.Web.Api.csproj" />
   </ItemGroup>
 

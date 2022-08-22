@@ -16,7 +16,6 @@ public partial class ProductControllerTest
     [InlineData(1)]
     public async Task Edit_ShouldReturn_Accepted(int productId)
     {
-        // TODO RUN SEEDS!
         // arrange
         var productHash = hashids.EncodeLong(productId);
         var url = $"/api/v1/product";
@@ -39,7 +38,6 @@ public partial class ProductControllerTest
     [InlineData(0)]
     public async Task Edit_ShouldReturn_NoContent(int productId)
     {
-        // TODO RUN SEEDS!
         // arrange
         var productHash = hashids.EncodeLong(productId);
         var url = $"/api/v1/product";

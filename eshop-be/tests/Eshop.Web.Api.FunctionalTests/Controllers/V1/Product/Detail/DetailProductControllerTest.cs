@@ -13,7 +13,6 @@ public partial class ProductControllerTest
     [InlineData(1)]
     public async Task Detail_ShouldReturn_Product(long productId)
     {
-        // TODO RUN SEEDS!
         // arrange
         var productHash = hashids.EncodeLong(productId);
         var url = $"/api/v1/product/{productHash}";
